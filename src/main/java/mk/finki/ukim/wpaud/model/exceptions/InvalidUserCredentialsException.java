@@ -1,0 +1,7 @@
+package mk.finki.ukim.wpaud.model.exceptions;
+
+public class InvalidUserCredentialsException extends RuntimeException{
+    public InvalidUserCredentialsException() {
+        super("Invalid user credentials exception");
+    }
+}
