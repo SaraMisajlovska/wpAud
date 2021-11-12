@@ -1,4 +1,4 @@
-package mk.finki.ukim.wpaud.web.servlet.filter;
+package mk.finki.ukim.wpaud.web.filter;
 
 import mk.finki.ukim.wpaud.model.User;
 
@@ -7,7 +7,6 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.net.http.HttpRequest;
 
 @WebFilter
 public class LoginFilter implements Filter {
@@ -29,6 +28,7 @@ public class LoginFilter implements Filter {
         User user = (User) request.getSession().getAttribute("user");
 
         String path = request.getServletPath();
+
 
         if (!path.equals("/login") && !path.equals("/main.css") && user == null){
             response.sendRedirect("/login");
