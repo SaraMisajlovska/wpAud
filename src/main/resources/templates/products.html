@@ -59,12 +59,12 @@
                              <th:block th:if="${#request.getRemoteUser() != null}"
                                        th:text="${#request.getRemoteUser()}"></th:block>
                          </a>
-                     </li>
-                     <li class="nav-item" sec:authorize="isAuthenticated()">
+                     </li>--->
+                     <li class="nav-item">
                          <a class="btn btn-success btn-sm ml-3" href="/shopping-cart">
                              <i class="fa fa-shopping-cart"></i> Cart
                          </a>
-                     </li> --->
+                     </li>
 
                     <li class="nav-item">
                         <a class="btn btn-light btn-sm ml-3" href="/logout">
@@ -119,6 +119,12 @@
                                    th:href="@{'/products/edit-form/{id}' (id=${product.getId()})}">
                                     <i>Edit</i>
                                 </a>
+                                <form th:method="post"
+                                      th:action="@{'/shopping-cart/add-product/{id}' (id=${product.getId()})}">
+                                    <button type="submit" class="btn btn-primary btn-sm">
+                                        <i>Add to cart</i>
+                                    </button>
+                                </form>
                             </td>
                         </tr>
                         </tbody>
