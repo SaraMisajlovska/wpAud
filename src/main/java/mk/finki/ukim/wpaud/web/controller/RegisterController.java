@@ -25,9 +25,10 @@ public class RegisterController {
             model.addAttribute("error", error);
 
         }
-        model.addAttribute("bodyContent","register");
+        return "register";
 
-        return "master-template";
+//        model.addAttribute("bodyContent","register");
+//        return "master-template";
     }
 
     @PostMapping
