@@ -12,4 +12,9 @@ public interface ManufacturerService {
 
     Optional<Manufacturer> findById(Long id);
 
+    Optional<Manufacturer> save(String name, String address);
+
+    void deleteById(Long id);
+
+
 }

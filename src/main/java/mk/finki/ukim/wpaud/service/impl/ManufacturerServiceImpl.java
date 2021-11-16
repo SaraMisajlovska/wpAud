@@ -26,4 +26,14 @@ public class ManufacturerServiceImpl implements ManufacturerService {
     public Optional<Manufacturer> findById(Long id) {
         return inMemoryManufacturerRepository.findById(id);
     }
+
+    @Override
+    public Optional<Manufacturer> save(String name, String address) {
+        return inMemoryManufacturerRepository.save(name, address);
+    }
+
+    @Override
+    public void deleteById(Long id) {
+        inMemoryManufacturerRepository.deleteById(id);
+    }
 }
