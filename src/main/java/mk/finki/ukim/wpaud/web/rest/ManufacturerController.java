@@ -23,7 +23,7 @@ public class ManufacturerController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Manufacturer> findById(Long id){
+    public ResponseEntity<Manufacturer> findById(@PathVariable Long id){
         return manufacturerService.findById(id)
                 .map(m -> ResponseEntity.ok().body(m))
                 .orElseGet(() -> ResponseEntity.notFound().build());
@@ -36,10 +36,9 @@ public class ManufacturerController {
                 .orElseGet(() -> ResponseEntity.badRequest().build());
     }
 
-    @GetMapping("/delete/{id}")
-    public ResponseEntity<Manufacturer> deleteById(Long id) {
-        manufacturerService.deleteById(id);
-        if (manufacturerService.findById(id).isEmpty()) return ResponseEntity.ok().build();
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<Manufacturer> deleteById(@PathVariable Long id) {
+        if (manufacturerService.deleteById(id)) return ResponseEntity.ok().build();
         return ResponseEntity.badRequest().build();
     }
 }

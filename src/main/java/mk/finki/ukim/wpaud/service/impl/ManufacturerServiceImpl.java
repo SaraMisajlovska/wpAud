@@ -33,7 +33,7 @@ public class ManufacturerServiceImpl implements ManufacturerService {
     }
 
     @Override
-    public void deleteById(Long id) {
-        inMemoryManufacturerRepository.deleteById(id);
+    public boolean deleteById(Long id) {
+        return inMemoryManufacturerRepository.deleteById(id);
     }
 }
