@@ -1,4 +1,4 @@
-package mk.finki.ukim.wpaud.repository;
+package mk.finki.ukim.wpaud.repository.impl;
 
 import mk.finki.ukim.wpaud.bootstrap.DataHolder;
 import mk.finki.ukim.wpaud.model.User;
@@ -27,8 +27,7 @@ public class InMemoryUserRepository {
     }
 
     public User saveOrUpdate (User user) {
-        DataHolder.users.removeIf(u ->
-                u.getUsername().equals(user.getUsername()));
+        DataHolder.users.removeIf(u -> u.getUsername().equals(user.getUsername()));
         DataHolder.users.add(user);
         return user;
     }

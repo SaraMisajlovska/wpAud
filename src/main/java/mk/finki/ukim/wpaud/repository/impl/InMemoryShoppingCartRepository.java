@@ -1,4 +1,4 @@
-package mk.finki.ukim.wpaud.repository;
+package mk.finki.ukim.wpaud.repository.impl;
 
 import mk.finki.ukim.wpaud.bootstrap.DataHolder;
 import mk.finki.ukim.wpaud.model.ShoppingCart;
