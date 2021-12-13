@@ -1,8 +1,8 @@
 package mk.finki.ukim.wpaud.service.impl;
 
 import mk.finki.ukim.wpaud.model.Manufacturer;
-import mk.finki.ukim.wpaud.model.Product;
-import mk.finki.ukim.wpaud.repository.InMemoryManufacturerRepository;
+import mk.finki.ukim.wpaud.repository.impl.InMemoryManufacturerRepository;
+import mk.finki.ukim.wpaud.repository.jpa.ManufacturerRepository;
 import mk.finki.ukim.wpaud.service.ManufacturerService;
 import org.springframework.stereotype.Service;
 
@@ -11,29 +11,30 @@ import java.util.Optional;
 
 @Service
 public class ManufacturerServiceImpl implements ManufacturerService {
-    InMemoryManufacturerRepository inMemoryManufacturerRepository;
+    //InMemoryManufacturerRepository inMemoryManufacturerRepository;
+    ManufacturerRepository manufacturerRepository;
 
-    public ManufacturerServiceImpl(InMemoryManufacturerRepository inMemoryManufacturerRepository) {
-        this.inMemoryManufacturerRepository = inMemoryManufacturerRepository;
+    public ManufacturerServiceImpl(ManufacturerRepository manufacturerRepository) {
+        this.manufacturerRepository = manufacturerRepository;
     }
 
     @Override
     public List<Manufacturer> findAll() {
-        return inMemoryManufacturerRepository.findAll();
+        return manufacturerRepository.findAll();
     }
 
     @Override
     public Optional<Manufacturer> findById(Long id) {
-        return inMemoryManufacturerRepository.findById(id);
+        return manufacturerRepository.findById(id);
     }
 
     @Override
     public Optional<Manufacturer> save(String name, String address) {
-        return inMemoryManufacturerRepository.save(name, address);
+        return Optional.of(manufacturerRepository.save(new Manufacturer(name,address)));
     }
 
     @Override
-    public boolean deleteById(Long id) {
-        return inMemoryManufacturerRepository.deleteById(id);
+    public void deleteById(Long id) {
+         manufacturerRepository.deleteById(id);
     }
 }
