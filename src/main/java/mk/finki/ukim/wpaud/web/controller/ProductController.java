@@ -34,7 +34,8 @@ public class ProductController {
 
         List<Product> products = productService.findAll();
         model.addAttribute("products", products);
-        return "products";
+        model.addAttribute("bodyContent", "products");
+        return "master-template";
     }
 
     // /products/67 - path variable
@@ -53,7 +54,8 @@ public class ProductController {
 
         model.addAttribute("categories", categories);
         model.addAttribute("manufacturers", manufacturers);
-        return "addProduct";
+        model.addAttribute("bodyContent", "addProduct");
+        return "master-template";
     }
 
     @GetMapping("/edit-form/{id}")
@@ -66,7 +68,8 @@ public class ProductController {
             model.addAttribute("categories", categories);
             model.addAttribute("manufacturers", manufacturers);
             model.addAttribute("product", product);
-            return "addProduct";
+            model.addAttribute("bodyContent", "addProduct");
+            return "master-template";
         }
         return "redirect:/products?error=ProductNotFound";
     }

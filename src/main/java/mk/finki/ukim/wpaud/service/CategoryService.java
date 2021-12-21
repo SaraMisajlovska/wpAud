@@ -3,6 +3,7 @@ package mk.finki.ukim.wpaud.service;
 import mk.finki.ukim.wpaud.model.Category;
 
 import java.util.List;
+import java.util.Optional;
 
 
 public interface CategoryService {
@@ -16,4 +17,5 @@ public interface CategoryService {
 
     List<Category> searchCategories(String searchText);
 
+    Optional<Category> save(String name, String description);
 }

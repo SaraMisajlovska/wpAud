@@ -57,4 +57,9 @@ public class CategoryServiceImpl implements CategoryService {
     public List<Category> searchCategories(String searchText) {
         return categoryRepository.findAllByNameLike(searchText);
     }
+
+    @Override
+    public Optional<Category> save(String name, String description) {
+        return Optional.of(categoryRepository.save(new Category(name,description)));
+    }
 }
