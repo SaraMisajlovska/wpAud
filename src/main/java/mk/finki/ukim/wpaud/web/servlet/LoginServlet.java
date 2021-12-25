@@ -3,10 +3,12 @@ package mk.finki.ukim.wpaud.web.servlet;
 import mk.finki.ukim.wpaud.model.User;
 import mk.finki.ukim.wpaud.model.exceptions.InvalidUserCredentialsException;
 import mk.finki.ukim.wpaud.service.AuthenticationService;
+import org.springframework.context.annotation.Profile;
 import org.thymeleaf.context.WebContext;
 import org.thymeleaf.spring5.SpringTemplateEngine;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebFilter;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -14,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebServlet(name = "LoginServlet", urlPatterns = "/servlet/login")
+
 public class LoginServlet extends HttpServlet {
 
     private final SpringTemplateEngine springTemplateEngine;

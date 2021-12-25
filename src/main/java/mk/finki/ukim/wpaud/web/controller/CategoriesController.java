@@ -27,7 +27,7 @@ public class CategoriesController {
         }
 
         model.addAttribute("categories", categoryService.listCategories());
-        model.addAttribute("bodyContent", "categories.html");
+        model.addAttribute("bodyContent", "categories");
         return "master-template";
     }
 

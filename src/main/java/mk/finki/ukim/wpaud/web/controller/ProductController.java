@@ -6,6 +6,7 @@ import mk.finki.ukim.wpaud.model.Product;
 import mk.finki.ukim.wpaud.service.CategoryService;
 import mk.finki.ukim.wpaud.service.ManufacturerService;
 import mk.finki.ukim.wpaud.service.ProductService;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -48,6 +49,7 @@ public class ProductController {
     }
 
     @GetMapping("/add-form")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public String addProductsPage(Model model) {
         List<Category> categories = categoryService.listCategories();
         List<Manufacturer> manufacturers = manufacturerService.findAll();

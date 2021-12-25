@@ -29,23 +29,23 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         //orElseThrow(() -> new InvalidUserCredentialsException()); because it asks for a supplier
     }
 
-    @Override
-    public User register(String name, String surname, String username, String password, String repeatPassword) {
-
-        if (username == null || username.isEmpty() || password == null || password.isEmpty()) {
-            throw new InvalidArgumentException();
-        }
-
-        if (!password.equals(repeatPassword)) {
-            throw new PasswordsDoNotMatchException();
-        }
-
-        User u = new User(username, password, name, surname);
-        if (userRepository.findByUsername(username).isPresent()
-                || !userRepository.findByUsername(username).isEmpty()){
-            throw new UsernameExistsException(username);
-        }
-        return userRepository.save(u);
-    }
+//    @Override
+//    public User register(String name, String surname, String username, String password, String repeatPassword) {
+//
+//        if (username == null || username.isEmpty() || password == null || password.isEmpty()) {
+//            throw new InvalidArgumentException();
+//        }
+//
+//        if (!password.equals(repeatPassword)) {
+//            throw new PasswordsDoNotMatchException();
+//        }
+//
+//        User u = new User(username, password, name, surname);
+//        if (userRepository.findByUsername(username).isPresent()
+//                || !userRepository.findByUsername(username).isEmpty()){
+//            throw new UsernameExistsException(username);
+//        }
+//        return userRepository.save(u);
+//    }
 
 }
