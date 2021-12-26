@@ -1,11 +1,13 @@
 package mk.finki.ukim.wpaud.model;
 
 import lombok.Data;
+import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 
 @Data
 @Entity
+
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

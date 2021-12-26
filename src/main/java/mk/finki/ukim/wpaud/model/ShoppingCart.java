@@ -2,6 +2,7 @@ package mk.finki.ukim.wpaud.model;
 
 import lombok.Data;
 import mk.finki.ukim.wpaud.model.enumerations.ShoppingCartStatus;
+import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -21,6 +22,7 @@ public class ShoppingCart {
     private User user;
 
     @ManyToMany
+    //@Cascade(value = org.hibernate.annotations.CascadeType.DELETE)
     private List<Product> products;
 
     @Enumerated(EnumType.STRING)

@@ -2,7 +2,6 @@ package mk.finki.ukim.wpaud;
 
 import mk.finki.ukim.wpaud.model.User;
 import mk.finki.ukim.wpaud.model.enumerations.Role;
-import mk.finki.ukim.wpaud.model.exceptions.InvalidArgumentException;
 import mk.finki.ukim.wpaud.model.exceptions.InvalidUsernameOrPasswordException;
 import mk.finki.ukim.wpaud.model.exceptions.PasswordsDoNotMatchException;
 import mk.finki.ukim.wpaud.model.exceptions.UsernameExistsException;
