@@ -1,6 +1,5 @@
-package mk.finki.ukim.wpaud.web.servlet;
+package mk.finki.ukim.wpaud.web.wp.servlet;
 
-import mk.finki.ukim.wpaud.model.Category;
 import mk.finki.ukim.wpaud.service.CategoryService;
 
 import javax.servlet.ServletException;
@@ -10,8 +9,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.List;
 
 //ctrl shift f9 za recompile na tekovna klasa
 @WebServlet(name = "category-servlet", urlPatterns = "/servlet/category")

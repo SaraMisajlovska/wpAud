@@ -8,8 +8,6 @@ import mk.finki.ukim.wpaud.model.exceptions.ProductAlreadyInShoppingCartExceptio
 import mk.finki.ukim.wpaud.model.exceptions.ProductNotFoundException;
 import mk.finki.ukim.wpaud.model.exceptions.ShoppingCartNotFoundException;
 import mk.finki.ukim.wpaud.model.exceptions.UserNotFoundException;
-import mk.finki.ukim.wpaud.repository.impl.InMemoryShoppingCartRepository;
-import mk.finki.ukim.wpaud.repository.impl.InMemoryUserRepository;
 import mk.finki.ukim.wpaud.repository.jpa.ShoppingCartRepository;
 import mk.finki.ukim.wpaud.repository.jpa.UserRepository;
 import mk.finki.ukim.wpaud.service.ProductService;

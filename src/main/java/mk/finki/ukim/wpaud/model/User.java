@@ -12,7 +12,7 @@ import java.util.List;
 
 @Data
 @Entity
-@Table(name="users_eshop")
+@Table(name = "users_eshop")
 public class User implements UserDetails {
 
     @Id
@@ -27,23 +27,30 @@ public class User implements UserDetails {
     @Enumerated(value = EnumType.STRING)
     private Role role;
 
+    @ManyToOne
+    private Discount discount;
+
     private boolean isAccountNonExpired = true;
+
     private boolean isAccountNonLocked = true;
+
     private boolean isCredentialsNonExpired = true;
+
     private boolean isEnabled = true;
 
-    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "user")
     private List<ShoppingCart> carts;
 
-    public User(String username, String password, String name, String surname,Role role) {
+    public User(String username, String password, String name, String surname, Role role) {
         this.username = username;
         this.password = password;
         this.name = name;
         this.surname = surname;
-        this.role=role;
+        this.role = role;
     }
 
-    public User() {}
+    public User() {
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

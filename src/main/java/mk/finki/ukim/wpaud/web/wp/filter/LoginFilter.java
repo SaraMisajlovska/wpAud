@@ -1,4 +1,4 @@
-package mk.finki.ukim.wpaud.web.filter;
+package mk.finki.ukim.wpaud.web.wp.filter;
 
 import mk.finki.ukim.wpaud.model.User;
 import org.springframework.context.annotation.Profile;

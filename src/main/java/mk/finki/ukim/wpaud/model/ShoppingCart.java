@@ -22,7 +22,6 @@ public class ShoppingCart {
     private User user;
 
     @ManyToMany
-    //@Cascade(value = org.hibernate.annotations.CascadeType.DELETE)
     private List<Product> products;
 
     @Enumerated(EnumType.STRING)

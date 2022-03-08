@@ -1,7 +1,6 @@
 package mk.finki.ukim.wpaud.service.impl;
 
 import mk.finki.ukim.wpaud.model.Category;
-import mk.finki.ukim.wpaud.repository.impl.InMemoryCategoryRepository;
 import mk.finki.ukim.wpaud.repository.jpa.CategoryRepository;
 import mk.finki.ukim.wpaud.service.CategoryService;
 import org.springframework.stereotype.Service;

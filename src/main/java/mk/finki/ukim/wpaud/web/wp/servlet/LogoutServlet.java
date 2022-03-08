@@ -1,6 +1,4 @@
-package mk.finki.ukim.wpaud.web.servlet;
-
-import org.thymeleaf.spring5.SpringTemplateEngine;
+package mk.finki.ukim.wpaud.web.wp.servlet;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

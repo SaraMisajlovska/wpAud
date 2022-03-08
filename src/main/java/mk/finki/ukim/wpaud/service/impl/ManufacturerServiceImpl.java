@@ -1,7 +1,6 @@
 package mk.finki.ukim.wpaud.service.impl;
 
 import mk.finki.ukim.wpaud.model.Manufacturer;
-import mk.finki.ukim.wpaud.repository.impl.InMemoryManufacturerRepository;
 import mk.finki.ukim.wpaud.repository.jpa.ManufacturerRepository;
 import mk.finki.ukim.wpaud.service.ManufacturerService;
 import org.springframework.stereotype.Service;
@@ -11,7 +10,7 @@ import java.util.Optional;
 
 @Service
 public class ManufacturerServiceImpl implements ManufacturerService {
-    //InMemoryManufacturerRepository inMemoryManufacturerRepository;
+
     ManufacturerRepository manufacturerRepository;
 
     public ManufacturerServiceImpl(ManufacturerRepository manufacturerRepository) {

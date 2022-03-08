@@ -3,8 +3,10 @@ package mk.finki.ukim.wpaud.service.impl;
 import mk.finki.ukim.wpaud.model.Category;
 import mk.finki.ukim.wpaud.model.Manufacturer;
 import mk.finki.ukim.wpaud.model.Product;
+import mk.finki.ukim.wpaud.model.dto.ProductDto;
 import mk.finki.ukim.wpaud.model.exceptions.CategoryNotFoundException;
 import mk.finki.ukim.wpaud.model.exceptions.ManufacturerNotFoundException;
+import mk.finki.ukim.wpaud.model.exceptions.ProductNotFoundException;
 import mk.finki.ukim.wpaud.repository.jpa.CategoryRepository;
 import mk.finki.ukim.wpaud.repository.jpa.ManufacturerRepository;
 import mk.finki.ukim.wpaud.repository.jpa.ProductRepository;
@@ -60,6 +62,64 @@ public class ProductServiceImpl implements ProductService {
         productRepository.deleteByName(name);
         return Optional.of(productRepository.save(new Product(name, price, quantity, category, manufacturer)));
     }
+
+    @Override
+    public Optional<Product> save(ProductDto  productDto) {
+
+        Category category = categoryRepository
+                .findById(productDto.getCategory().getId())
+                .orElseThrow(() -> new CategoryNotFoundException(productDto.getCategory().getId()));
+
+        Manufacturer manufacturer = manufacturerRepository
+                .findById(productDto.getManufacturer().getId())
+                .orElseThrow(() -> new ManufacturerNotFoundException(productDto.getManufacturer().getId()));
+
+        productRepository.deleteByName(productDto.getName());
+        return Optional.of(productRepository.save(new Product(productDto.getName(), productDto.getPrice(), productDto.getQuantity(), category, manufacturer)));
+    }
+
+    @Override
+    @Transactional
+    public Optional<Product> edit(Long id, String name, Double price, Integer quantity, Long categoryId, Long manufacturerId) {
+
+        Product product = this.productRepository.findById(id).orElseThrow(() -> new ProductNotFoundException(id));
+
+        product.setName(name);
+        product.setPrice(price);
+        product.setQuantity(quantity);
+
+        Category category = this.categoryRepository.findById(categoryId)
+                .orElseThrow(() -> new CategoryNotFoundException(categoryId));
+        product.setCategory(category);
+
+        Manufacturer manufacturer = this.manufacturerRepository.findById(manufacturerId)
+                .orElseThrow(() -> new ManufacturerNotFoundException(manufacturerId));
+        product.setManufacturer(manufacturer);
+
+        this.productRepository.save(product);
+        return Optional.of(product);
+    }
+
+    @Override
+    public Optional<Product> edit(Long id, ProductDto productDto) {
+        Product product = this.productRepository.findById(id).orElseThrow(() -> new ProductNotFoundException(id));
+
+        product.setName(productDto.getName());
+        product.setPrice(productDto.getPrice());
+        product.setQuantity(productDto.getQuantity());
+
+        Category category = this.categoryRepository.findById(productDto.getCategory().getId())
+                .orElseThrow(() -> new CategoryNotFoundException(productDto.getCategory().getId()));
+        product.setCategory(category);
+
+        Manufacturer manufacturer = this.manufacturerRepository.findById(productDto.getManufacturer().getId())
+                .orElseThrow(() -> new ManufacturerNotFoundException(productDto.getManufacturer().getId()));
+        product.setManufacturer(manufacturer);
+
+        this.productRepository.save(product);
+        return Optional.of(product);
+    }
+
 
     @Override
     public void deleteById(Long id) {
