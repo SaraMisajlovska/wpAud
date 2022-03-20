@@ -2,6 +2,7 @@ package mk.finki.ukim.wpaud.repository;
 
 import mk.finki.ukim.wpaud.model.User;
 import mk.finki.ukim.wpaud.model.enumerations.Role;
+import mk.finki.ukim.wpaud.model.exceptions.UserNotFoundException;
 import mk.finki.ukim.wpaud.model.projections.UserProjection;
 import mk.finki.ukim.wpaud.repository.jpa.UserRepository;
 import org.junit.Assert;
@@ -39,11 +40,25 @@ public class UserRepositoryTest {
     }
 
     @Test
-    public void testProjectUsernameAndNameAndSurname(){
-        UserProjection userProjection  = userRepository.findByRole(Role.ROLE_USER);
+    public void testProjectUsernameAndNameAndSurname() {
+        UserProjection userProjection = userRepository.findByRole(Role.ROLE_USER);
         Assert.assertEquals("sara.m", userProjection.getUsername());
         Assert.assertEquals("Sara ", userProjection.getName());
         Assert.assertEquals("Misajlovska", userProjection.getSurname());
+    }
+
+    @Test
+    public void testOptimisticLock() {
+        User user1 = this.userRepository.findByUsername("sara.m")
+                .orElseThrow(() -> new UserNotFoundException("sara.m"));
+
+        User user2 = this.userRepository.findByUsername("sara.m")
+                .orElseThrow(() -> new UserNotFoundException("sara.m"));
+
+        user1.setName("sara.m1");
+        user1.setName("sara.m2");
+        this.userRepository.save(user1);
+        this.userRepository.save(user2);
     }
 
 }

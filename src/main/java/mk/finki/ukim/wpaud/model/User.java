@@ -18,6 +18,9 @@ public class User implements UserDetails {
     @Id
     private String username;
 
+    @Version
+    private Long version;
+
     private String password;
 
     private String name;
@@ -27,8 +30,8 @@ public class User implements UserDetails {
     @Enumerated(value = EnumType.STRING)
     private Role role;
 
-    @ManyToOne
-    private Discount discount;
+//    @ManyToOne zatoa sto imame many to many notacija kaj discount
+//    private Discount discount;
 
     private boolean isAccountNonExpired = true;
 
